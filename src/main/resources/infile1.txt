@@ -1,0 +1,14 @@
+Learning Hadoop is easy and fun.
+It's my first program in Hadoop
+Important topics in Hadoop are
+MapReduce,Pig,HBase,Hive,Sqoop,Oozie
+Wow Hadoop is awesome.
+Learning Hadoop is easy and fun.
+It's my first program in Hadoop with Bigdata.
+Important topics in Hadoop are
+MapReduce ( Searching, Sum, Avg, etc)
+Pig (is a high-level platform for creating programs that run on Apache Hadoop, to have an ad-hoc way of creating and executing MapReduce jobs on very large data sets )
+HBase -> Hive (is a data warehouse infrastructure built on top of Hadoop for providing data summarization, query, and analysis)
+Sqoop is a command-line interface application for transferring data between relational databases and Hadoop.
+Oozie (Oozie Workflow Scheduler for Hadoop)
+Wow Hadoop is awesome.

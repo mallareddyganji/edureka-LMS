@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- only one line, shut up logback ! -->
+<!--Logback Disable logging in Unit Test 
+While the unit test is running in the IDE, the Logback is always showing a lot of configuration logging like this :
+It is really annoying, especially for the failed test, because I need to scroll down manually to review the error message!
+
+Solution: To fix it, create an empty configuration file as logback-test.xml, and save it under $project/src/test/resources
+-->
+
+<configuration />
