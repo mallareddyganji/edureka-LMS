@@ -1,4 +1,3 @@
-
 Steps:   Refer "HadoopSetupinWindows7.docx" before doing the following steps make sure all your Java, Hadoop, Maven paths are set in Windows 7 Environment.
 
 Pre-requisites 
@@ -10,10 +9,9 @@ Pre-requisites
 
 Too install the tools.jar to Maven local repository issue below command
 
-Java installation path=C:/Progra~1/Java/jdk1.8.0_92/lib/tools.jar
+Assume my Java installation path=C:/Progra~1/Java/jdk1.8.0_92/lib/tools.jar
 
 D:\github\MapReduce\>mvn install:install-file -DgroupId=jdk.tools -DartifactId=jdk.tools -Dpackaging=jar -Dversion=1.8 -Dfile=${java.home}/../lib/tools.jar -DgeneratePom=true
-
 
 
 
@@ -65,7 +63,7 @@ starting yarn daemons
 
 or 
 
-c:\hadoop-2.3.0\sbin>start-dfs.cmd   will bring up NameNode, DataNode
+c:\hadoop-2.3.0\sbin>start-dfs.cmd   -> will bring up NameNode, DataNode
 
 c:\hadoop-2.3.0\sbin>jps
 6432 NameNode
@@ -73,8 +71,11 @@ c:\hadoop-2.3.0\sbin>jps
 7640
 8972 DataNode
 
-c:\hadoop-2.3.0\sbin>start-yarn.cmd    will bring up ResourceManager, NodeManager
+c:\hadoop-2.3.0\sbin>start-yarn.cmd    -> will bring up ResourceManager, NodeManager
 starting yarn daemons
+
+
+Step 2.2: Verify with jps command for 4 Hadoop services should be up and running. (no output means check your jps is pointing to JAVA_HOME or not)
 
 C:\hadoop-2.3.0\sbin>jps
 6784
@@ -85,18 +86,6 @@ C:\hadoop-2.3.0\sbin>jps
 9980 DataNode
 
 C:\hadoop-2.3.0\sbin>
-
--- To bring down issue below
-C:\hadoop-2.3.0\sbin>stop-all.cmd
-This script is Deprecated. Instead use stop-dfs.cmd and stop-yarn.cmd
-SUCCESS: Sent termination signal to the process with PID 6708.
-SUCCESS: Sent termination signal to the process with PID 8448.
-stopping yarn daemons
-SUCCESS: Sent termination signal to the process with PID 6536.
-SUCCESS: Sent termination signal to the process with PID 592.
-
-INFO: No tasks running with the specified criteria.
-
 
 C:\hadoop-2.3.0\sbin>hadoop namenode -format
 DEPRECATED: Use of this script to execute hdfs command is deprecated.
@@ -176,17 +165,6 @@ SHUTDOWN_MSG: Shutting down NameNode at NCS-210715RT13/192.168.1.7
 ************************************************************/
 
 
-
-
-Step 2.2: Verify with jps command for 4 Hadoop services should be up and running. (no output means check your jps is pointing to JAVA_HOME or not)
-
-c:\hadoop-2.3.0\sbin>jps
-7776 DataNode
-5236 NameNode
-5128 ResourceManager
-7640
-5148 Jps
-5628 NodeManager
 
 c:\hadoop-2.3.0\sbin>
 
@@ -362,17 +340,14 @@ C:\>
 
 
 
-
-
 Step 4:   Compile the Hadoop Maven project
 Step 4.1: To convert the Java project to eclipse accessible and compile issue below command.
 
-  D:\github\MapReduce>mvn eclipse:clean eclipse:eclipse clean install
-  D:\github\MapReduce>mvn clean install
-  D:\github\MapReduce>mvn dependency:tree
+D:\github\MapReduce>mvn eclipse:clean eclipse:eclipse clean install
+D:\github\MapReduce>mvn clean install
+D:\github\MapReduce>mvn dependency:tree
 
 It will download the necessary hadoop and hadoop dependency jars to C:\Users\<usernameXXX>\.m2 directory
-
 
 
 D:\github\MapReduce>mvn eclipse:clean eclipse:eclipse install
@@ -504,11 +479,11 @@ D:\github\MapReduce\target>hadoop jar MapReduce-0.0.1-SNAPSHOT.jar in.edureka.ma
 D:\github\MapReduce\target>
 
 
+--Some Useful hdfs commands
 
-Some Useful hdfs commands
 1. List All Files & Subdirectory Contents from the Command Line or multiple directories
 hdfs dfs -ls -R /
-
+hdfs dfs -ls -R /in /out
 
 D:\github\MapReduce\target>hdfs dfs -ls -R /in /out
 drwxr-xr-x   - ganjimr supergroup          0 2016-06-17 01:34 /in/wc
@@ -525,29 +500,6 @@ Hadoop  7
 is      4
 
 D:\github\MapReduce\target>
-
-
-
-Step 8 – namenode GUI, resourcemanager GUI
-
---2) To check the input /output folders in browser mode
-http://localhost:50070/explorer.html
-
-Resourcemanager GUI address - http://localhost:8088
-
-Namenode GUI address – http://localhost:50070
-
---2) To check the input / output folders in browser mode
-http://localhost:50070/explorer.html
-
-
-
-
-Some Useful hdfs commands
-1. List All Files & Subdirectory Contents from the Command Line or multiple directories
-hdfs dfs -ls -R /
-
-hdfs dfs -ls -R /in /out
 
 C:\hadoop-2.3.0\sbin>hdfs dfs -ls -R /in /out
 -rw-r--r--   1 ganjimr supergroup  141698284 2016-06-10 17:57 /in/recipeitems-latest.json
@@ -566,13 +518,21 @@ drwxr-xr-x   - ganjimr supergroup          0 2016-06-13 17:51 /out/wccsv
 C:\hadoop-2.3.0\sbin>
 
 
-Wow you did your first Hadoop Program. Congrats 
+Step 8 â€“ namenode GUI, resourcemanager GUI
 
+--2) To check the input /output folders in browser mode
+http://localhost:50070/explorer.html
+
+Namenode GUI address â€“ http://localhost:50070
+Resourcemanager GUI address - http://localhost:8088
+
+
+Wow you did your first Hadoop Program. Congrats
 
 
 Reference(s):
 
-1.	https://github.com/steveloughran/winutils  -> Download to your local machine’s D:\github\ and compare with C:\hadoop-2.3.0 and copy all the necessary files such as winutils.exe etc
+1.	https://github.com/steveloughran/winutils  -> Download to your local machineâ€™s D:\github\ and compare with C:\hadoop-2.3.0 (download https://archive.apache.org/dist/hadoop/core/hadoop-2.3.0/hadoop-2.3.0.tar.gz and unzip in C:\) and copy all the necessary files such as winutils.exe etc.
 
 2.	https://hadoopi.wordpress.com/2013/05/25/setup-maven-project-for-hadoop-in-5mn/
 
@@ -580,13 +540,32 @@ Reference(s):
 
 4.	https://github.com/prabaprakash/Hadoop-2.3
 
-5.	https://in.linkedin.com/in/muthu4all -> from Edureka Instructor
+5.	http://www.edureka.co/   
 
-6.	http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.4-Win/bk_QuickStart_HDPWin/content/ch_qinst.html
+6.	https://in.linkedin.com/in/muthu4all -> from Edureka Instructor Muthu
 
-7.	http://www.edureka.co/
+7.	http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.4-Win/bk_QuickStart_HDPWin/content/ch_qinst.html
 
-8.	https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html   -> For Java path
+8.	https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html     -> For Java path
 
-9.	http://www.dummies.com/how-to/content/hadoop-distributed-file-system-shell-commands.html   -> For hdfs commands
+9.	http://www.dummies.com/how-to/content/hadoop-distributed-file-system-shell-commands.html     -> For hdfs commands
 10.	https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html -> For hdfs commands
+
+
+
+
+
+
+
+
+
+
+for patient:
+
+hdfs dfs -mkdir -p /in/mr
+hdfs dfs -put D:\github\edureka_LMS\trunk\src\main\resources\mr\* /in/mr
+hdfs dfs -ls /in/mr /out/mr
+hadoop jar wc.jar in.edureka.mapreduce.WordCount /in/mr /out/mr
+
+
+
